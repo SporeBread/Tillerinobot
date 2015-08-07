@@ -16,93 +16,93 @@ import tillerino.tillerinobot.RecommendationsManager.Recommendation;
  * Please put some contact data into the following tag. If any additional
  * messages are required, I'll use the English version in all translations and
  * notify the authors.
- * 
+ * Translator Email: markshi233@163.com
  * @author Tillerino tillmann.gaida@gmail.com https://github.com/Tillerino https://osu.ppy.sh/u/2070907
  */
 public class Default implements Language {
 
 	@Override
 	public String unknownBeatmap() {
-		return "I'm sorry, I don't know that map. It might be very new, very hard, unranked or not standard osu mode.";
+		return "抱歉，我不认识这个图。它有可能太新了,太难了，未排名，或者不在标准的osu模式里。";
 	}
 
 	@Override
 	public String internalException(String marker) {
-		return "Ugh... Looks like human Tillerino screwed up my wiring."
-				+ " If he doesn't notice soon, could you [https://github.com/Tillerino/Tillerinobot/wiki/Contact inform him]? (reference "
+		return "呃... 看来Tillerino本人把我的线路搞乱了。"
+				+ "如果他还没有注意到问题的话，可以麻烦[https://github.com/Tillerino/Tillerinobot/wiki/Contact 通知他吗]? (reference "
 				+ marker + ")";
 	}
 
 	@Override
 	public String externalException(String marker) {
-		return "What's going on? I'm only getting nonsense from the osu server. Can you tell me what this is supposed to mean? 0011101001010000"
-				+ " Human Tillerino says that this is nothing to worry about, and that we should try again."
-				+ " If you're super worried for some reason, you can [https://github.com/Tillerino/Tillerinobot/wiki/Contact tell him] about it. (reference "
+		return "发生什么了？ Osu服务端只给我发来乱码. 你知道这是什么意思吗？ 0011101001010000"
+				+ "Tillerino本人说并不用担心，再试一遍吧。"
+				+ "如果你有什么原因很担心的话，你可以[https://github.com/Tillerino/Tillerinobot/wiki/Contact 联系他]。 (reference "
 				+ marker + ")";
 	}
 
 	@Override
 	public String noInformationForModsShort() {
-		return "no data for requested mods";
+		return "没有要求的模组的信息";
 	}
 
 	@Override
 	public void welcomeUser(IRCBotUser user, OsuApiUser apiUser, long inactiveTime) {
 		if (inactiveTime < 60 * 1000) {
-			user.message("beep boop");
+			user.message("哔哔~");
 		} else if (inactiveTime < 24 * 60 * 60 * 1000) {
-			user.message("Welcome back, " + apiUser.getUserName() + ".");
+			user.message("欢迎回来， " + apiUser.getUserName() + ".");
 		} else if (inactiveTime > 7l * 24 * 60 * 60 * 1000) {
 			user.message(apiUser.getUserName() + "...");
-			user.message("...is that you? It's been so long!");
-			user.message("It's good to have you back. Can I interest you in a recommendation?");
+			user.message("。。。是你吗？好久不见了！");
+			user.message("你回来可真好。我可以给你一些推荐吗？");
 		} else {
 			String[] messages = {
-					"you look like you want a recommendation.",
-					"how nice to see you! :)",
-					"my favourite human. (Don't tell the other humans!)",
-					"what a pleasant surprise! ^.^",
-					"I was hoping you'd show up. All the other humans are lame, but don't tell them I said that! :3",
-					"what do you feel like doing today?",
+					"你看起来想要一个推荐",
+					"真高兴见到你！ :)",
+					"你是我最喜欢的人类。 (别告诉其他的人类!)",
+					"真是一个惊喜！ ^.^",
+					"我就指望你出现呢。其他的人类都太无聊了，不过别告诉他们！ :3",
+					"今天想做什么呢？",
 			};
 
 			Random random = new Random();
 
 			String message = messages[random.nextInt(messages.length)];
 
-			user.message(apiUser.getUserName() + ", " + message);
+			user.message(apiUser.getUserName() + "，" + message);
 		}
 	}
 
 	@Override
 	public String unknownCommand(String command) {
 		return "Unknown command \"" + command
-				+ "\". Type !help if you need help!";
+				+ "\". 如果需要帮忙的话请输入!help";
 	}
 
 	@Override
 	public String noInformationForMods() {
-		return "Sorry, I can't provide information for those mods at this time.";
+		return "对不起，我现在没有该模组的信息";
 	}
 
 	@Override
 	public String malformattedMods(String mods) {
-		return "Those mods don't look right. Mods can be any combination of DT HR HD HT EZ NC FL SO NF. Combine them without any spaces or special chars. Example: !with HDHR, !with DTEZ";
+		return "这些模组看起来不太对。模组的组合可以是DT HR HD HT EZ NC FL SO NF。请不要用空格或者特殊符号把他们合在一起。比如：!with HDHR, !with DTEZ";
 	}
 
 	@Override
 	public String noLastSongInfo() {
-		return "I don't remember giving you any song info...";
+		return "我不记得我给了你歌曲信息了啊。。。";
 	}
 
 	@Override
 	public String tryWithMods() {
-		return "Try this map with some mods!";
+		return "试试开着一些模组玩这个图！";
 	}
 
 	@Override
 	public String tryWithMods(List<Mods> mods) {
-		return "Try this map with " + Mods.toShortNamesContinuous(mods) + "!";
+		return "试试带着这些模组" + Mods.toShortNamesContinuous(mods) + "玩吧!";
 	}
 
 	/**
@@ -117,59 +117,59 @@ public class Default implements Language {
 	 * @return
 	 */
 	public String unresolvableName(String exceptionMarker, String name) {
-		return "Your name is confusing me. Are you banned? If not, pls [https://github.com/Tillerino/Tillerinobot/wiki/Contact contact Tillerino]. (reference "
+		return "你的名字让我很困惑。你被禁了吗？如果你没有的话，请 [https://github.com/Tillerino/Tillerinobot/wiki/Contact 联系Tillerino]. (reference "
 				+ exceptionMarker + ")";
 	}
 
 	@Override
 	public String excuseForError() {
-		return "I'm sorry, there was this beautiful sequence of ones and zeros and I got distracted. What did you want again?";
+		return "对不起，我被一串漂亮的零和一打扰了。你要啥来着？";
 	}
 
 	@Override
 	public String complaint() {
-		return "Your complaint has been filed. Tillerino will look into it when he can.";
+		return "你的投诉已经被发送。Tillerino会在有时间的时候检查问题。";
 	}
 
 	@Override
 	public void hug(final IRCBotUser user, OsuApiUser apiUser) {
-		user.message("Come here, you!");
-		user.action("hugs " + apiUser.getUserName());
+		user.message("来一发吧！");
+		user.action("抱抱" + apiUser.getUserName());
 	}
 
 	@Override
 	public String help() {
-		return "Hi! I'm the robot who killed Tillerino and took over his account. Just kidding, but I do use the account a lot."
-				+ " [https://twitter.com/Tillerinobot status and updates]"
-				+ " - [https://github.com/Tillerino/Tillerinobot/wiki commands]"
+		return "你好！我是杀死了Tillerino然后偷走了他的账号的机器人！开个玩笑，我只是借他的帐号用而已。"
+				+ " [https://twitter.com/Tillerinobot 状态与更新]"
+				+ " - [https://github.com/Tillerino/Tillerinobot/wiki 命令]"
 				+ " - [http://ppaddict.tillerino.org/ ppaddict]"
-				+ " - [https://github.com/Tillerino/Tillerinobot/wiki/Contact contact]";
+				+ " - [https://github.com/Tillerino/Tillerinobot/wiki/Contact 联系]";
 	}
 
 	@Override
 	public String faq() {
-		return "[https://github.com/Tillerino/Tillerinobot/wiki/FAQ Frequently asked questions]";
+		return "[https://github.com/Tillerino/Tillerinobot/wiki/FAQ 常见问题]";
 	}
 
 	@Override
 	public String featureRankRestricted(String feature, int minRank, OsuApiUser user) {
-		return "Sorry, at this point " + feature + " is only available for players who have surpassed rank " + minRank + ".";
+		return "对不起，目前" + feature + " 只对排名超过" + minRank + "的玩家开放。";
 	}
 
 	@Override
 	public String mixedNomodAndMods() {
-		return "What do you mean nomod with mods?";
+		return "无模组加上模组是几个意思？";
 	}
 
 	@Override
 	public String outOfRecommendations() {
-		return "I've recommended everything that I can think of."
-				+ " Try other recommendation options or use !reset. If you're not sure, check !help.";
+		return "我已经推荐了所有我能够想到的图。"
+				+ "试试其他的推荐或者输入!reset. 如果你不清楚的话，请输入 !help.";
 	}
 
 	@Override
 	public String notRanked() {
-		return "Looks like that beatmap is not ranked.";
+		return "这个图好像没有排名。";
 	}
 
 	@Override
@@ -202,7 +202,7 @@ public class Default implements Language {
 
 	@Override
 	public String invalidAccuracy(String acc) {
-		return "Invalid accuracy: \"" + acc + "\"";
+		return "无效的精准度： \"" + acc + "\"";
 	}
 
 	@Override
@@ -232,17 +232,17 @@ public class Default implements Language {
 		 * P.S. you can put a link to your profile into the line like this:
 		 * [https://osu.ppy.sh/u/2070907 Tillerino]
 		 */
-		user.message("So you like me just the way I am :)");
+		user.message("壮哉我大天朝！-SporeBread");
 	}
 
 	@Override
 	public String invalidChoice(String invalid, String choices) {
-		return "I'm sorry, but \"" + invalid
-				+ "\" does not compute. Try these: " + choices + "!";
+		return "对不起，但是 \"" + invalid
+				+ "\"无效。 请试试： " + choices + "!";
 	}
 
 	@Override
 	public String setFormat() {
-		return "The syntax to set a parameter is !set option value. Try !help if you need more pointers.";
+		return "设置参量的格式为！set 选项 数值。如果需要更多指示的话请输入!help。";
 	}
 }
